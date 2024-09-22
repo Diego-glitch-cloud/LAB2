@@ -50,7 +50,9 @@ public class Seccion {
                 if (fila.size() < MAX_COL) {
                     fila.add(contenedor);
                     peso += contenedor.getPeso();
-                    contenedor.setId(fila.indexOf(contenedor));
+                    contenedor.setNum(fila.indexOf(contenedor) + (contenedores.indexOf(fila) * 5)); // Posición dentro
+                                                                                                    // de la matriz
+                    // nota: no se ve afectado cuando se elimina un elemento del Arraylist
                     return true; // Se agregó el contenedor
                 }
             }
@@ -72,12 +74,29 @@ public class Seccion {
 
     public Contenedor eliminarContenedor(Contenedor contenedor) { // Si se desea eliminar un contenedor en específico
         for (ArrayList<Contenedor> fila : contenedores) {
-            fila.remove(contenedor);
+            if (fila.remove(contenedor)) {
+                break; // Break justificado para salir del for
+            }
         }
 
         peso = peso - contenedor.getPeso();
+        contenedor.setNum(0);
         return contenedor; // Se retorna el mismo contenedor pese a ya conocerse por si el usuario desea
                            // migrarlo a otra sección
+    }
+
+    // Buscar contenedor por ID
+    public Contenedor buscarContenedor(int id) {
+
+        for (ArrayList<Contenedor> fila : contenedores) {
+            for (Contenedor elemento : fila) {
+                if (elemento.getId() == id) {
+                    return elemento;
+                }
+            }
+        }
+
+        return null;
     }
 
     // Setters & Getters
