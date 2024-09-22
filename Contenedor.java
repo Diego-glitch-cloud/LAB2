@@ -13,9 +13,8 @@ public class Contenedor {
     // 4 = Maquinaria
 
     // Constructor
-    Contenedor(int id, int num, String producto, int seccion) {
+    Contenedor(int id, String producto, int seccion) {
         this.id = id;
-        this.num = num;
         this.producto = producto;
         switch (seccion) { // Definiendo peso dependiendo de la sección (peso promedio por contenedor de
                            // esa sección)

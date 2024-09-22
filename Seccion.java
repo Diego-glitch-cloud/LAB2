@@ -50,6 +50,7 @@ public class Seccion {
                 if (fila.size() < MAX_COL) {
                     fila.add(contenedor);
                     peso += contenedor.getPeso();
+                    contenedor.setId(fila.indexOf(contenedor));
                     return true; // Se agregó el contenedor
                 }
             }
