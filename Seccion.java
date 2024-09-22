@@ -45,7 +45,7 @@ public class Seccion {
 
     // Agregar un contenedor a la sección
     public boolean agregarContenedor(Contenedor contenedor) {
-        if (peso + contenedor.getPeso() <= CAP_MAX) {
+        if (peso + contenedor.getPeso() <= CAP_MAX && contenedor.getSeccion() == tipo) {
             for (ArrayList<Contenedor> fila : contenedores) {
                 if (fila.size() < MAX_COL) {
                     fila.add(contenedor);
