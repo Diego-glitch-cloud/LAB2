@@ -153,6 +153,8 @@ public class Main {
                     System.out.println("Opción no válida.");
                     break;
             }
+
+            scanner.close();
         }
 
     }
