@@ -115,6 +115,10 @@ public class Seccion {
         this.tipo = tipo;
     }
 
+    public int getCap_max() {
+        return CAP_MAX;
+    }
+
     public ArrayList<ArrayList<Contenedor>> getContenedores() {
         return contenedores;
     }

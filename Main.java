@@ -63,7 +63,7 @@ public class Main {
             switch (opcion) {
                 // Agregar un contenedor a una sección
                 case 1:
-                    System.out.print("¿Cuál es el producto que almacena este contenedor?");
+                    System.out.print("¿Cuál es el producto que almacena este contenedor? ");
                     producto = scanner.nextLine();
                     id += 1;
                     seccion.agregarContenedor(new Contenedor(id, producto, opcion_seccion));
@@ -141,7 +141,7 @@ public class Main {
                     break;
                 // Mostrar información de los contenedores en una sección.
                 case 4:
-
+                    System.out.println("datos");
                     break;
 
                 case 5:
