@@ -4,6 +4,7 @@ public class Contenedor {
     private int id;
     private int num;
     private String producto;
+    private float peso;
     private int seccion;
     // Secciones:
     // 1 = Productos electrónicos
@@ -16,12 +17,31 @@ public class Contenedor {
         this.id = id;
         this.num = num;
         this.producto = producto;
+        switch (seccion) { // Definiendo peso dependiendo de la sección (peso promedio por contenedor de
+                           // esa sección)
+            case 1:
+                this.peso = (200000) / 50;
+                break;
+            case 2:
+                this.peso = (150000) / 50;
+                break;
+            case 3:
+                this.peso = (250000) / 50;
+                break;
+            case 4:
+                this.peso = (300000) / 50;
+                break;
+            default:
+                this.peso = 0;
+                break;
+        }
         this.seccion = seccion;
     }
 
     // Métodos
     public String toString() {
-        return "Contenedor [id=" + id + ", num=" + num + ", producto=" + producto + ", seccion=" + seccion + "]";
+        return "Contenedor [id=" + id + ", num=" + num + ", producto=" + producto + ", peso=" + peso
+                + ", seccion=" + seccion + "]";
     }
 
     // Setters & getters
@@ -47,6 +67,14 @@ public class Contenedor {
 
     public void setProducto(String producto) {
         this.producto = producto;
+    }
+
+    public float getPeso() {
+        return peso;
+    }
+
+    public void setPeso(float peso) {
+        this.peso = peso;
     }
 
     public int getSeccion() {
