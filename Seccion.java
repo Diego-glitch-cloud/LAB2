@@ -75,14 +75,13 @@ public class Seccion {
     public Contenedor eliminarContenedor(Contenedor contenedor) { // Si se desea eliminar un contenedor en específico
         for (ArrayList<Contenedor> fila : contenedores) {
             if (fila.remove(contenedor)) {
-                break; // Break justificado para salir del for
+                peso = peso - contenedor.getPeso();
+                return contenedor; // Break justificado para salir del for
             }
         }
 
-        peso = peso - contenedor.getPeso();
-        contenedor.setNum(0);
-        return contenedor; // Se retorna el mismo contenedor pese a ya conocerse por si el usuario desea
-                           // migrarlo a otra sección
+        return null; // Se retorna el mismo contenedor pese a ya conocerse por si el usuario desea
+                     // migrarlo a otra sección
     }
 
     // Buscar contenedor por ID

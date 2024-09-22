@@ -72,18 +72,74 @@ public class Main {
                 // Eliminar Contenedor
                 case 2:
                     System.out.println("""
-                                1. Eliminar por medio de ID
+                                1. Eliminar por medio de número
                                 2. Eliminar último contenedor
                             """);
                     System.out.print("Escoja la opción que desee: ");
                     int opcion_eliminar = scanner.nextInt();
                     scanner.nextLine(); // Consumir el salto de línea
-                    break;
 
+                    int id_eliminar;
+                    switch (opcion_eliminar) {
+                        case 1:
+                            System.out.print("¿Cuál es el id del contenedor que desea eliminar?");
+                            id_eliminar = scanner.nextInt();
+                            scanner.nextLine();
+                            if (seccion.eliminarContenedor(seccion.buscarContenedor(id_eliminar)) != null) {
+                                System.out.println("Contenedor eliminado exitosamente.");
+                            } else {
+                                System.out.println("Ocurrió un error, no se pudo eliminar el contenedor");
+                            }
+                            break;
+
+                        case 2:
+                            if (seccion.eliminarContenedor() != null) {
+                                System.out.println("Contenedor eliminado exitosamente.");
+                            } else {
+                                System.out.println("Ocurrió un error, no se pudo eliminar el contenedor");
+                            }
+                            break;
+                        default:
+                            System.out.println("Opción no válida.");
+                            break;
+                    }
+                    break;
+                // Mover contenedor de sección
                 case 3:
+                    Contenedor contenedor = null;
+                    System.out.print("¿Cuál es el id del contenedor que desea mover?");
+                    int id_mover = scanner.nextInt();
+                    scanner.nextLine();
+                    if (seccion.eliminarContenedor(seccion.buscarContenedor(id_mover)) != null) {
+                        contenedor = seccion.eliminarContenedor(seccion.buscarContenedor(id_mover));
+                    } else {
+                        System.out.println("Ocurrió un error, no se pudo eliminar el contenedor");
+                    }
 
+                    System.out.println(secciones);
+                    System.out.print("Escoja la sección que desea manipular: ");
+                    int opcion_seccion_mover = scanner.nextInt();
+                    scanner.nextLine(); // Consumir el salto de línea
+
+                    switch (opcion_seccion_mover) {
+                        case 1:
+                            electronicos.agregarContenedor(contenedor);
+                            break;
+                        case 2:
+                            ropa.agregarContenedor(contenedor);
+                            break;
+                        case 3:
+                            alimentos.agregarContenedor(contenedor);
+                            break;
+                        case 4:
+                            maquinaria.agregarContenedor(contenedor);
+                            break;
+                        default:
+                            System.out.println("Error al ingresar el valor.");
+                            break;
+                    }
                     break;
-
+                // Mostrar información de los contenedores en una sección.
                 case 4:
 
                     break;
