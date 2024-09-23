@@ -1,4 +1,13 @@
+//
+// Programación orientada a objetos
+// Sección 20
+// Laboratorio 2
+// 
+// Diego Calderón = 241263
+//
+
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -72,7 +81,7 @@ public class Main {
                 // Eliminar Contenedor
                 case 2:
                     System.out.println("""
-                                1. Eliminar por medio de número
+                                1. Eliminar por medio de ID
                                 2. Eliminar último contenedor
                             """);
                     System.out.print("Escoja la opción que desee: ");
@@ -82,7 +91,7 @@ public class Main {
                     int id_eliminar;
                     switch (opcion_eliminar) {
                         case 1:
-                            System.out.print("¿Cuál es el id del contenedor que desea eliminar?");
+                            System.out.print("¿Cuál es el id del contenedor que desea eliminar? ");
                             id_eliminar = scanner.nextInt();
                             scanner.nextLine();
                             if (seccion.eliminarContenedor(seccion.buscarContenedor(id_eliminar)) != null) {
@@ -106,20 +115,30 @@ public class Main {
                     break;
                 // Mover contenedor de sección
                 case 3:
-                    Contenedor contenedor = null;
-                    System.out.print("¿Cuál es el id del contenedor que desea mover?");
+                    // Mover contenedor de sección
+                    System.out.print("¿Cuál es el id del contenedor que desea mover? ");
                     int id_mover = scanner.nextInt();
-                    scanner.nextLine();
-                    if (seccion.eliminarContenedor(seccion.buscarContenedor(id_mover)) != null) {
-                        contenedor = seccion.eliminarContenedor(seccion.buscarContenedor(id_mover));
+                    scanner.nextLine(); // Consumir el salto de línea
+
+                    // Buscar el contenedor
+                    Contenedor contenedor = seccion.buscarContenedor(id_mover);
+
+                    // Verificar si el contenedor existe antes de eliminarlo
+                    if (contenedor != null) {
+                        // Eliminar el contenedor de la sección
+                        seccion.eliminarContenedor(contenedor);
                     } else {
-                        System.out.println("Ocurrió un error, no se pudo eliminar el contenedor");
+                        System.out.println("Contenedor no encontrado.");
+                        break;
                     }
 
+                    // Pedir nueva sección para mover el contenedor
                     System.out.println(secciones);
-                    System.out.print("Escoja la sección que desea manipular: ");
+                    System.out.print("Escoja la sección a la que desea mover el contenedor: ");
                     int opcion_seccion_mover = scanner.nextInt();
                     scanner.nextLine(); // Consumir el salto de línea
+
+                    contenedor.setSeccion(opcion_seccion_mover);
 
                     switch (opcion_seccion_mover) {
                         case 1:
@@ -139,9 +158,26 @@ public class Main {
                             break;
                     }
                     break;
+
                 // Mostrar información de los contenedores en una sección.
                 case 4:
-                    System.out.println("datos");
+                    System.out.println("Información de los contenedores de la sección: ");
+                    for (int i = 0; i < seccion.getContenedores().size(); i++) {
+                        ArrayList<Contenedor> fila = seccion.getContenedores().get(i);
+                        System.out.println("Fila " + (i + 1) + ":");
+
+                        // Iterar sobre los contenedores dentro de cada fila
+                        for (int j = 0; j < fila.size(); j++) {
+                            Contenedor contenedorj = fila.get(j);
+
+                            // Imprimir los detalles del contenedor
+                            System.out.println("  Contenedor ID: " + contenedorj.getId());
+                            System.out.println("  Producto: " + contenedorj.getProducto());
+                            System.out.println("  Sección: " + contenedorj.getSeccion());
+                            System.out.println("  Peso: " + contenedorj.getPeso() + " kg");
+                            System.out.println("-------------------");
+                        }
+                    }
                     break;
 
                 case 5:
@@ -153,9 +189,7 @@ public class Main {
                     System.out.println("Opción no válida.");
                     break;
             }
-
-            scanner.close();
         }
-
+        scanner.close();
     }
 }

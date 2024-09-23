@@ -1,3 +1,11 @@
+//
+// Programación orientada a objetos
+// Sección 20
+// Laboratorio 2
+// 
+// Diego Calderón = 241263
+//
+
 import java.util.ArrayList;
 
 public class Seccion {
@@ -45,12 +53,13 @@ public class Seccion {
 
     // Agregar un contenedor a la sección
     public boolean agregarContenedor(Contenedor contenedor) {
-        if (peso + contenedor.getPeso() <= CAP_MAX && contenedor.getSeccion() == tipo) {
+        if (peso + contenedor.getPeso() <= CAP_MAX) {
             for (ArrayList<Contenedor> fila : contenedores) {
                 if (fila.size() < MAX_COL) {
                     fila.add(contenedor);
                     peso += contenedor.getPeso();
-                    contenedor.setNum(fila.indexOf(contenedor) + (contenedores.indexOf(fila) * 5)); // Posición dentro
+                    contenedor.setNum(fila.indexOf(contenedor) + (contenedores.indexOf(fila) * 5)); // Posición
+                                                                                                    // dentro
                                                                                                     // de la matriz
                     // nota: no se ve afectado cuando se elimina un elemento del Arraylist
                     return true; // Se agregó el contenedor
@@ -58,7 +67,6 @@ public class Seccion {
             }
         }
         return false; // No se pudo agregar el contenedor
-
     }
 
     // Eliminar Contenedor
@@ -76,12 +84,11 @@ public class Seccion {
         for (ArrayList<Contenedor> fila : contenedores) {
             if (fila.remove(contenedor)) {
                 peso = peso - contenedor.getPeso();
-                return contenedor; // Break justificado para salir del for
+                return contenedor;
             }
         }
 
-        return null; // Se retorna el mismo contenedor pese a ya conocerse por si el usuario desea
-                     // migrarlo a otra sección
+        return contenedor;
     }
 
     // Buscar contenedor por ID

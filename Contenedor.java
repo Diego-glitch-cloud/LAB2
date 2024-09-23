@@ -1,10 +1,17 @@
+//
+// Programación orientada a objetos
+// Sección 20
+// Laboratorio 2
+// 
+// Diego Calderón = 241263
+//
 
 public class Contenedor {
     // Atributos
     private int id;
     private int num;
     private String producto;
-    private float peso;
+    private float peso = 0;
     private int seccion;
     // Secciones:
     // 1 = Productos electrónicos
