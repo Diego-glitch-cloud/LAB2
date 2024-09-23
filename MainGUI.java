@@ -1,3 +1,11 @@
+//
+// Programación orientada a objetos
+// Sección 20
+// Laboratorio 2
+// 
+// Diego Calderón = 241263
+//
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
